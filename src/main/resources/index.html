@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Math Quiz procensus challenge</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="traffic.css">
+</head>
+<body ng-app="mathQuiz" ng-controller="mathQuizController">
+MathQuiz!
+</body>
+
+<script>
+angular.module('mathQuiz', [])
+.controller('mathQuizController', function($scope,$timeout,$http) {
+
+    /*$scope.lightColor = new Array(4);
+
+    $scope.initializeTrafficLightsModel = function(){
+        $http.get('/status').
+            success(function (data, status, headers, config) {
+               var statuses =  data.status;
+               if(typeof statuses[0] !== undefined) {
+                   for (var i = 0; i < $scope.lightColor.length; i++) {
+                       $scope.updateLightStatus(i,statuses[i]);
+                   }
+               }
+            });
+    };
+
+    $scope.startListening = function(){
+      var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
+       var socket = new WS("ws://"+window.location.host+"/light/status/stream");
+       socket.onmessage = function (event) {
+        if(typeof event.data !== undefined){
+          var message = event.data.split(':');
+          var lightId = message[0];
+          var color = message[1];
+          $scope.updateLightStatus(lightId,color);
+          $scope.$apply();
+          console.log('Light #'+lightId+' changed to '+color);
+        }
+       };
+    };
+
+    $scope.updateLightStatus = function(lightId,color) {
+      $scope.lightColor[lightId] = color;
+      var isGreen = false;
+      if (color == "G") {
+           $scope.car = "from-" + lightId;
+           isGreen = true;
+       }
+       if(!isGreen) {
+           $scope.car = "";
+       }
+    };
+
+    $scope.initializeTrafficLightsModel();
+    $scope.startListening();*/
+
+ });
+
+</script>
+
+</html>
