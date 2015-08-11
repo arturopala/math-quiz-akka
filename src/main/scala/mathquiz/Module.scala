@@ -17,7 +17,7 @@ class Module(implicit system: ActorSystem) extends Macwire with ActorOf {
 
   val period: FiniteDuration = 10.seconds
 
-  lazy val mathQuizCommandLineActor = actorOf[MathQuizCommandLineActor]("mathquiz-commandline")
+  lazy val mathQuizCommandLineActor = actorOf[MathQuizCommandLine]("mathquiz-commandline")
   lazy val httpService: MathQuizHttpService = wire[MathQuizHttpService]
   lazy val httpServiceActor: ActorRef = actorOf[MathQuizHttpServiceActor]("http", httpService)
 }

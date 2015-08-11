@@ -19,8 +19,8 @@ object MathQuizConversation {
   object Wow
   object Buuu
   case class Message(message: String)
-  object Winner extends MathQuizState
-  case class Looser(reason: String) extends MathQuizState
+  object Winner
+  case class Looser(reason: String)
 }
 
 sealed trait MathQuizState

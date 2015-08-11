@@ -10,12 +10,13 @@ object MathQuizCommandLine {
 
 }
 
-class MathQuizCommandLineActor() extends Actor with ActorLogging {
+class MathQuizCommandLine() extends Actor with ActorLogging {
 
   import MathQuizCommandLine._
   import MathQuizConversation._
 
   var conversation: Option[ActorRef] = None
+  var quiz: Seq[Puzzle[String]] = Seq.empty
 
   val separator = "#" * 90
 
@@ -26,6 +27,8 @@ class MathQuizCommandLineActor() extends Actor with ActorLogging {
   def receive = {
 
     case StartQuiz(quiz) =>
+      this.quiz = quiz
+      conversation foreach context.stop
       conversation = Some(context.actorOf(Props(classOf[MathQuizConversation], quiz, maxAttempts, minValidAnswers, responseTimeout)))
       context.watch(conversation.get)
       conversation ! Start
@@ -78,7 +81,7 @@ class MathQuizCommandLineActor() extends Actor with ActorLogging {
   def askIfContinue() = {
     scala.io.StdIn.readLine("Do you want to start new quiz [yes] or exit the game [no]? ") match {
       case "yes" =>
-        self ! StartQuiz
+        self ! StartQuiz(quiz)
       case _ =>
         System.exit(0)
     }
