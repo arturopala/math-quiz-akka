@@ -6,11 +6,11 @@ name := "challenge"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
 resolvers += Resolver.mavenLocal
 
-val akkaVersion = "2.3.9"
+val akkaVersion = "2.3.12"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
